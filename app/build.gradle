@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'checkstyle'
 }
 
 application {
@@ -30,3 +31,4 @@ compileJava {
 run {
     standardInput = System.in
 }
+

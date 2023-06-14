@@ -5,6 +5,7 @@ import java.util.Scanner;
 import hexlet.code.games.GCD;
 import hexlet.code.games.IsEven;
 import hexlet.code.games.Calculator;
+import hexlet.code.games.Progression;
 
 public class Engine {
     public static String askQuestion(String question) {
@@ -59,6 +60,19 @@ public class Engine {
                         return;
                     }
                     break;
+                case "progression":
+                    String question4 = askQuestion(Progression.questionGenerator());
+                    String userAnswer4 = receiveUserAnswer();
+                    String correctAnswer4 = Progression.getCorrectAnswer(question4);
+                    if (userAnswer4.equals(correctAnswer4) && round != 3) {
+                        printRightAnswerMessage();
+                    } else if (userAnswer4.equals(correctAnswer4) && round == 3) {
+                        printFinalGongratulationsMessage(userName);
+                    } else if (!userAnswer4.equals(correctAnswer4)) {
+                        printWrongAnswerMessage(userName, userAnswer4, correctAnswer4, typeOfGame);
+                        return;
+                    }
+                    break;
             }
         }
     }
@@ -74,7 +88,7 @@ public class Engine {
                     System.out.println("Let's try again, " + userName + "!");
                 }
                 System.exit(0);
-            case "calculator", "gcd":
+            case "calculator", "gcd", "progression":
                 System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
                 System.out.println("Let's try again, " + userName + "!");
                 System.exit(0);

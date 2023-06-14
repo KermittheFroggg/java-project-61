@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner gameChoice = new Scanner(System.in);
-        System.out.printf("Please enter the game number and press Enter\n1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n0 - Exit\nYour choice:");
+        System.out.printf("Please enter the game number and press Enter\n1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n5 - Progression\n0 - Exit\nYour choice:");
         int choice = Integer.parseInt(gameChoice.next());
         System.out.println();
 
@@ -27,6 +27,11 @@ public class App {
                 String userName3 = Cli.cli();
                 System.out.println("Find the greatest common divisor of given numbers.");
                 Engine.runGames(userName3, "gcd");
+                break;
+            case 5:
+                String userName4 = Cli.cli();
+                System.out.println("What number is missing in the progression?");
+                Engine.runGames(userName4, "progression");
                 break;
             default:
                 return;

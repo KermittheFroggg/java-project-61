@@ -94,10 +94,10 @@ public class Engine {
     public static void printWrongAnswerMessage(String userName, String userAnswer, String correctAnswer, String typeOfGame) {
         switch (typeOfGame) {
             case "isEven", "prime":
-                if (typeOfGame.equals("isEven") && userAnswer.equals("yes")) {
+                if (userAnswer.equals("yes")) {
                     System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'");
                     System.out.println("Let's try again, " + userName + "!");
-                } else if (typeOfGame.equals("isEven") && userAnswer.equals("no")) {
+                } else if (userAnswer.equals("no")) {
                     System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'");
                     System.out.println("Let's try again, " + userName + "!");
                 }

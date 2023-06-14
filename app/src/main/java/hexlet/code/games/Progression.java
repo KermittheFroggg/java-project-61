@@ -12,8 +12,8 @@ public class Progression {
         intProgression[0] = rand.nextInt(upperbound);
         int increaseOfProgression = rand.nextInt(upperbound) + 1;
 
-        for (var i = 1; i <= intProgression.length-1; i++) {
-            intProgression[i] = intProgression[i-1] + increaseOfProgression;
+        for (var i = 1; i <= intProgression.length - 1; i++) {
+            intProgression[i] = intProgression[i - 1] + increaseOfProgression;
         }
 
         String strProgression = Arrays.toString(intProgression);
@@ -35,12 +35,14 @@ public class Progression {
     public static String getCorrectAnswer(String question) {
         String[] strArrayProgression = question.split(" ");
         int intCorrectAnswer = 0;
-        for (var i = 0; i <= strArrayProgression.length-1; i++) {
-            if (strArrayProgression[i].equals("..")){
-                if (i <= 1){
-                    intCorrectAnswer = Integer.parseInt(strArrayProgression[i+1]) - (Integer.parseInt(strArrayProgression[i+2]) - Integer.parseInt(strArrayProgression[i+1]));
+        for (var i = 0; i <= strArrayProgression.length - 1; i++) {
+            if (strArrayProgression[i].equals("..")) {
+                if (i <= 1) {
+                    int nextNumber = Integer.parseInt(strArrayProgression[i + 1]);
+                    intCorrectAnswer = nextNumber - (Integer.parseInt(strArrayProgression[i + 2]) - nextNumber);
                 } else {
-                    intCorrectAnswer = Integer.parseInt(strArrayProgression[i-1]) + (Integer.parseInt(strArrayProgression[i-1]) - Integer.parseInt(strArrayProgression[i-2]));
+                    int previousNumber = Integer.parseInt(strArrayProgression[i - 1]);
+                    intCorrectAnswer = previousNumber + (previousNumber - Integer.parseInt(strArrayProgression[i - 2]));
                 }
             }
         }

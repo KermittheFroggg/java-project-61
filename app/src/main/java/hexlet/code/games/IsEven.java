@@ -7,8 +7,8 @@ public class IsEven {
 
         Random rand = new Random();
         int upperbound = 34;
-        int int_random = rand.nextInt(upperbound) + 1;
-        String question = String.valueOf(int_random);
+        int number = rand.nextInt(upperbound) + 1;
+        String question = String.valueOf(number);
         return question;
     }
 

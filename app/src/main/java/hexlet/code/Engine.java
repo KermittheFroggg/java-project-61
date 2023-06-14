@@ -87,11 +87,14 @@ public class Engine {
                         return;
                     }
                     break;
+                default:
+                    return;
             }
         }
     }
 
-    public static void printWrongAnswerMessage(String userName, String userAnswer, String correctAnswer, String typeOfGame) {
+    public static void printWrongAnswerMessage(
+            String userName, String userAnswer, String correctAnswer, String typeOfGame) {
         switch (typeOfGame) {
             case "isEven", "prime":
                 if (userAnswer.equals("yes")) {

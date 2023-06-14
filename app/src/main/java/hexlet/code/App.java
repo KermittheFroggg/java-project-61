@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner gameChoice = new Scanner(System.in);
-        System.out.printf("Please enter the game number and press Enter\n1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n5 - Progression\n0 - Exit\nYour choice:");
+        System.out.printf("Please enter the game number and press Enter\n1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n5 - Progression\n6 - Prime\n0 - Exit\nYour choice:");
         int choice = Integer.parseInt(gameChoice.next());
         System.out.println();
 
@@ -32,6 +32,11 @@ public class App {
                 String userName4 = Cli.cli();
                 System.out.println("What number is missing in the progression?");
                 Engine.runGames(userName4, "progression");
+                break;
+            case 6:
+                String userName5 = Cli.cli();
+                System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+                Engine.runGames(userName5, "prime");
                 break;
             default:
                 return;

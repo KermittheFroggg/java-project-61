@@ -6,6 +6,7 @@ import hexlet.code.games.GCD;
 import hexlet.code.games.IsEven;
 import hexlet.code.games.Calculator;
 import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 
 public class Engine {
     public static String askQuestion(String question) {
@@ -73,13 +74,26 @@ public class Engine {
                         return;
                     }
                     break;
+                case "prime":
+                    String question5 = askQuestion(Prime.questionGenerator());
+                    String userAnswer5 = receiveUserAnswer();
+                    String correctAnswer5 = Prime.getCorrectAnswer(question5);
+                    if (userAnswer5.equals(correctAnswer5) && round != 3) {
+                        printRightAnswerMessage();
+                    } else if (userAnswer5.equals(correctAnswer5) && round == 3) {
+                        printFinalGongratulationsMessage(userName);
+                    } else if (!userAnswer5.equals(correctAnswer5)) {
+                        printWrongAnswerMessage(userName, userAnswer5, correctAnswer5, typeOfGame);
+                        return;
+                    }
+                    break;
             }
         }
     }
 
     public static void printWrongAnswerMessage(String userName, String userAnswer, String correctAnswer, String typeOfGame) {
         switch (typeOfGame) {
-            case "isEven":
+            case "isEven", "prime":
                 if (typeOfGame.equals("isEven") && userAnswer.equals("yes")) {
                     System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'");
                     System.out.println("Let's try again, " + userName + "!");

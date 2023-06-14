@@ -1,62 +1,94 @@
 package hexlet.code;
 
 import java.util.Scanner;
+
+import hexlet.code.games.GCD;
 import hexlet.code.games.IsEven;
 import hexlet.code.games.Calculator;
 
 public class Engine {
-    public static void askQuestion(String question){
+    public static String askQuestion(String question) {
         System.out.println("Question: " + question);
+        return question;
     }
-    public static String receiveUserAnswer(){
+
+    public static String receiveUserAnswer() {
         Scanner answer = new Scanner(System.in);
         String userAnswer = answer.next();
         System.out.println("Your answer: " + userAnswer);
         return userAnswer;
     }
-    public static void finalGongratulations(String userName) {
-        System.out.println("Congratulations, " + userName+ "!");
 
-    }
-    public static void wrongAnswer(String userName, String userAnswer, String typeOfGame) {
-        if (typeOfGame.equals("isEven")  && userAnswer.equals("yes")) {
-            System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'");
-            System.out.println("Let's try again, " + userName + "!");
-        } else if (typeOfGame.equals("isEven")  && userAnswer.equals("no")) {
-            System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'");
-            System.out.println("Let's try again, " + userName + "!");
+    public static void runGames(String userName, String typeOfGame) {
+        for (var round = 1; round <= 3; round++) {
+            switch (typeOfGame) {
+                case "isEven":
+                    String question = askQuestion(IsEven.questionGenerator());
+                    String userAnswer = receiveUserAnswer();
+                    String correctAnswer = IsEven.getCorrectAnswer(question);
+                    if (userAnswer.equals(correctAnswer) && round != 3) {
+                        printRightAnswerMessage();
+                    } else if (userAnswer.equals(correctAnswer) && round == 3) {
+                        printFinalGongratulationsMessage(userName);
+                    } else if (!userAnswer.equals(correctAnswer)) {
+                        printWrongAnswerMessage(userName, userAnswer, correctAnswer, typeOfGame);
+                    }
+                    break;
+                case "calculator":
+                    String question2 = askQuestion(Calculator.questionGenerator());
+                    String userAnswer2 = receiveUserAnswer();
+                    String correctAnswer2 = Calculator.getCorrectAnswer(question2);
+                    if (userAnswer2.equals(correctAnswer2) && round != 3) {
+                        printRightAnswerMessage();
+                    } else if (userAnswer2.equals(correctAnswer2) && round == 3) {
+                        printFinalGongratulationsMessage(userName);
+                    } else if (!userAnswer2.equals(correctAnswer2)) {
+                        printWrongAnswerMessage(userName, userAnswer2, correctAnswer2, typeOfGame);
+                    }
+                    break;
+                case "gcd":
+                    String question3 = askQuestion(GCD.questionGenerator());
+                    String userAnswer3 = receiveUserAnswer();
+                    String correctAnswer3 = GCD.getCorrectAnswer(question3);
+                    if (userAnswer3.equals(correctAnswer3) && round != 3) {
+                        printRightAnswerMessage();
+                    } else if (userAnswer3.equals(correctAnswer3) && round == 3) {
+                        printFinalGongratulationsMessage(userName);
+                    } else if (!userAnswer3.equals(correctAnswer3)) {
+                        printWrongAnswerMessage(userName, userAnswer3, correctAnswer3, typeOfGame);
+                        return;
+                    }
+                    break;
+            }
         }
     }
-    public static void rightAnswer() {
+
+    public static void printWrongAnswerMessage(String userName, String userAnswer, String correctAnswer, String typeOfGame) {
+        switch (typeOfGame) {
+            case "isEven":
+                if (typeOfGame.equals("isEven") && userAnswer.equals("yes")) {
+                    System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'");
+                    System.out.println("Let's try again, " + userName + "!");
+                } else if (typeOfGame.equals("isEven") && userAnswer.equals("no")) {
+                    System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'");
+                    System.out.println("Let's try again, " + userName + "!");
+                }
+                System.exit(0);
+            case "calculator", "gcd":
+                System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
+                System.out.println("Let's try again, " + userName + "!");
+                System.exit(0);
+            default:
+                System.exit(0);
+        }
+        System.exit(0);
+    }
+
+    public static void printRightAnswerMessage() {
         System.out.println("Correct!");
     }
 
-    public static void runCycle(String userName, String gameQuestion1, String gameQuestion2, String gameQuestion3, String typeOfGame) {
-       String[] gameQuestions = new String[]{gameQuestion1, gameQuestion2, gameQuestion3};
-       int x = 0;
-       for (var round=1; round<=3; round++) {
-            Engine.askQuestion(gameQuestions[x]);
-            String userAnswer = Engine.receiveUserAnswer();
-            Boolean checkedAnswer = sendAnswerForChecking(userName, gameQuestions[x], userAnswer, round, typeOfGame);
-            if (checkedAnswer && round != 3){
-                rightAnswer();
-            } else if (checkedAnswer && round == 3) {
-                finalGongratulations(userName);
-            } else if (!checkedAnswer) {
-                wrongAnswer(userName, userAnswer, typeOfGame);
-                return;
-            } else if (checkedAnswer == null) {
-                return;
-            }
-            x += 1;
-        }
-    }
-    public static Boolean sendAnswerForChecking(String userName, String question, String userAnswer, int round, String typeOfGame) {
-        if (typeOfGame == "isEven") {
-            return IsEven.checkAnswer(userName, question, userAnswer, round);
-        } else if (typeOfGame == "calculator") {
-            return Calculator.checkAnswer(userName, question, userAnswer, round);
-        }
-        return null;
+    public static void printFinalGongratulationsMessage(String userName) {
+        System.out.println("Congratulations, " + userName + "!");
     }
 }

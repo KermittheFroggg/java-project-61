@@ -22,15 +22,16 @@ public class Engine {
     }
 
     public static void runGames(String userName, String typeOfGame) {
-        for (var round = 1; round <= 3; round++) {
+        int numberOfCycles = 3;
+        for (var round = 1; round <= numberOfCycles; round++) {
             switch (typeOfGame) {
                 case "isEven":
                     String question = askQuestion(IsEven.questionGenerator());
                     String userAnswer = receiveUserAnswer();
                     String correctAnswer = IsEven.getCorrectAnswer(question);
-                    if (userAnswer.equals(correctAnswer) && round != 3) {
+                    if (userAnswer.equals(correctAnswer) && round != numberOfCycles) {
                         printRightAnswerMessage();
-                    } else if (userAnswer.equals(correctAnswer) && round == 3) {
+                    } else if (userAnswer.equals(correctAnswer) && round == numberOfCycles) {
                         printFinalGongratulationsMessage(userName);
                     } else if (!userAnswer.equals(correctAnswer)) {
                         printWrongAnswerMessage(userName, userAnswer, correctAnswer, typeOfGame);
@@ -40,9 +41,9 @@ public class Engine {
                     String question2 = askQuestion(Calculator.questionGenerator());
                     String userAnswer2 = receiveUserAnswer();
                     String correctAnswer2 = Calculator.getCorrectAnswer(question2);
-                    if (userAnswer2.equals(correctAnswer2) && round != 3) {
+                    if (userAnswer2.equals(correctAnswer2) && round != numberOfCycles) {
                         printRightAnswerMessage();
-                    } else if (userAnswer2.equals(correctAnswer2) && round == 3) {
+                    } else if (userAnswer2.equals(correctAnswer2) && round == numberOfCycles) {
                         printFinalGongratulationsMessage(userName);
                     } else if (!userAnswer2.equals(correctAnswer2)) {
                         printWrongAnswerMessage(userName, userAnswer2, correctAnswer2, typeOfGame);
@@ -52,9 +53,9 @@ public class Engine {
                     String question3 = askQuestion(GCD.questionGenerator());
                     String userAnswer3 = receiveUserAnswer();
                     String correctAnswer3 = GCD.getCorrectAnswer(question3);
-                    if (userAnswer3.equals(correctAnswer3) && round != 3) {
+                    if (userAnswer3.equals(correctAnswer3) && round != numberOfCycles) {
                         printRightAnswerMessage();
-                    } else if (userAnswer3.equals(correctAnswer3) && round == 3) {
+                    } else if (userAnswer3.equals(correctAnswer3) && round == numberOfCycles) {
                         printFinalGongratulationsMessage(userName);
                     } else if (!userAnswer3.equals(correctAnswer3)) {
                         printWrongAnswerMessage(userName, userAnswer3, correctAnswer3, typeOfGame);
@@ -65,9 +66,9 @@ public class Engine {
                     String question4 = askQuestion(Progression.questionGenerator());
                     String userAnswer4 = receiveUserAnswer();
                     String correctAnswer4 = Progression.getCorrectAnswer(question4);
-                    if (userAnswer4.equals(correctAnswer4) && round != 3) {
+                    if (userAnswer4.equals(correctAnswer4) && round != numberOfCycles) {
                         printRightAnswerMessage();
-                    } else if (userAnswer4.equals(correctAnswer4) && round == 3) {
+                    } else if (userAnswer4.equals(correctAnswer4) && round == numberOfCycles) {
                         printFinalGongratulationsMessage(userName);
                     } else if (!userAnswer4.equals(correctAnswer4)) {
                         printWrongAnswerMessage(userName, userAnswer4, correctAnswer4, typeOfGame);
@@ -78,9 +79,9 @@ public class Engine {
                     String question5 = askQuestion(Prime.questionGenerator());
                     String userAnswer5 = receiveUserAnswer();
                     String correctAnswer5 = Prime.getCorrectAnswer(question5);
-                    if (userAnswer5.equals(correctAnswer5) && round != 3) {
+                    if (userAnswer5.equals(correctAnswer5) && round != numberOfCycles) {
                         printRightAnswerMessage();
-                    } else if (userAnswer5.equals(correctAnswer5) && round == 3) {
+                    } else if (userAnswer5.equals(correctAnswer5) && round == numberOfCycles) {
                         printFinalGongratulationsMessage(userName);
                     } else if (!userAnswer5.equals(correctAnswer5)) {
                         printWrongAnswerMessage(userName, userAnswer5, correctAnswer5, typeOfGame);

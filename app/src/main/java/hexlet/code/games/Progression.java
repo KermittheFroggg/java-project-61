@@ -7,8 +7,8 @@ public class Progression {
     public static String questionGenerator() {
 
         Random rand = new Random();
-        int upperbound = 9;
-        int[] intProgression = new int[10];
+        final int upperbound = 9;
+        final int[] intProgression = new int[10];
         intProgression[0] = rand.nextInt(upperbound);
         int increaseOfProgression = rand.nextInt(upperbound) + 1;
 

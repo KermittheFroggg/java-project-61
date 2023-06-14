@@ -5,7 +5,7 @@ public class Calculator {
     public static String questionGenerator() {
 
         Random rand = new Random();
-        int upperbound = 34;
+        final int upperbound = 34;
         int number1 = rand.nextInt(upperbound);
         int number2 = rand.nextInt(upperbound);
 

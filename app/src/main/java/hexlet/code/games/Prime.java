@@ -6,7 +6,7 @@ public class Prime {
     public static String questionGenerator() {
 
         Random rand = new Random();
-        int upperbound = 34;
+        final int upperbound = 34;
         int number = rand.nextInt(upperbound) + 2;
         String question = String.valueOf(number);
         return question;

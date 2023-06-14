@@ -22,7 +22,7 @@ public class Engine {
     }
 
     public static void runGames(String userName, String typeOfGame) {
-        int numberOfCycles = 3;
+        final int numberOfCycles = 3;
         for (var round = 1; round <= numberOfCycles; round++) {
             switch (typeOfGame) {
                 case "isEven":

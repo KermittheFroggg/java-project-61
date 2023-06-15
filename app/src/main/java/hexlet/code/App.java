@@ -11,15 +11,15 @@ public class App {
                 + "Progression\n6 - Prime\n0 - Exit\nYour choice:");
         int choice = Integer.parseInt(gameChoice.next());
         System.out.println();
-        Map<Integer, String> typeOfGame = new HashMap<>();
-        typeOfGame.put(1, "Greet");
-        typeOfGame.put(2, "isEven");
-        typeOfGame.put(3, "calculator");
-        typeOfGame.put(4, "gcd");
-        typeOfGame.put(5, "progression");
-        typeOfGame.put(6, "prime");
-        typeOfGame.put(0, "Exit");
+        Map<String, String> typeOfGame = new HashMap<>();
+        typeOfGame.put("1", "Greet");
+        typeOfGame.put("2", "isEven");
+        typeOfGame.put("3", "calculator");
+        typeOfGame.put("4", "gcd");
+        typeOfGame.put("5", "progression");
+        typeOfGame.put("6", "prime");
+        typeOfGame.put("0", "Exit");
 
-        Engine.runGames(typeOfGame.get(choice));
+        Engine.runGames(typeOfGame.get(Integer.toString(choice)));
     }
 }

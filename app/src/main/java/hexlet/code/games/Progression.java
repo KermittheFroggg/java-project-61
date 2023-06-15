@@ -8,7 +8,8 @@ public class Progression {
 
         Random rand = new Random();
         final int upperbound = 9;
-        final int[] intProgression = new int[10];
+        final int progressionLength = 10;
+        final int[] intProgression = new int[progressionLength];
         intProgression[0] = rand.nextInt(upperbound);
         int increaseOfProgression = rand.nextInt(upperbound) + 1;
 

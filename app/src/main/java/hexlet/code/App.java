@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class App {
@@ -8,31 +10,16 @@ public class App {
         System.out.printf("Please enter the game number and press Enter\n1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n5 - "
                 + "Progression\n6 - Prime\n0 - Exit\nYour choice:");
         int choice = Integer.parseInt(gameChoice.next());
-        int[] arrayChoice = {0, 1, 2, 3, 4, 5, 6};
         System.out.println();
+        Map<Integer, String> typeOfGame = new HashMap<>();
+        typeOfGame.put(1, "Greet");
+        typeOfGame.put(2, "isEven");
+        typeOfGame.put(3, "calculator");
+        typeOfGame.put(4, "gcd");
+        typeOfGame.put(5, "progression");
+        typeOfGame.put(6, "prime");
+        typeOfGame.put(0, "Exit");
 
-        if (choice == arrayChoice[1]) {
-            Cli.cli();
-        } else if (choice == arrayChoice[2]) {
-            String userName = Cli.cli();
-            System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-            Engine.runGames(userName, "isEven");
-        } else if (choice == arrayChoice[3]) {
-            String userName2 = Cli.cli();
-            System.out.println("What is the result of the expression?");
-            Engine.runGames(userName2, "calculator");
-        } else if (choice == arrayChoice[4]) {
-            String userName3 = Cli.cli();
-            System.out.println("Find the greatest common divisor of given numbers.");
-            Engine.runGames(userName3, "gcd");
-        } else if (choice == arrayChoice[5]) {
-            String userName4 = Cli.cli();
-            System.out.println("What number is missing in the progression?");
-            Engine.runGames(userName4, "progression");
-        } else if (choice == arrayChoice[6]) {
-            String userName5 = Cli.cli();
-            System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-            Engine.runGames(userName5, "prime");
-        }
+        Engine.runGames(typeOfGame.get(choice));
     }
 }

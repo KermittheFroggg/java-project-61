@@ -21,11 +21,18 @@ public class Engine {
         return userAnswer;
     }
 
-    public static void runGames(String userName, String typeOfGame) {
+    public static void runGames(String typeOfGame) {
+        if (typeOfGame.equals("Exit")) {
+            return;
+        }
+        String userName = GetUserName.run();
         final int numberOfCycles = 3;
         for (var round = 1; round <= numberOfCycles; round++) {
             switch (typeOfGame) {
+                case "Greet":
+                    break;
                 case "isEven":
+                    System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
                     String question = askQuestion(IsEven.questionGenerator());
                     String userAnswer = receiveUserAnswer();
                     String correctAnswer = IsEven.getCorrectAnswer(question);
@@ -38,6 +45,7 @@ public class Engine {
                     }
                     break;
                 case "calculator":
+                    System.out.println("What is the result of the expression?");
                     String question2 = askQuestion(Calculator.questionGenerator());
                     String userAnswer2 = receiveUserAnswer();
                     String correctAnswer2 = Calculator.getCorrectAnswer(question2);
@@ -50,6 +58,7 @@ public class Engine {
                     }
                     break;
                 case "gcd":
+                    System.out.println("Find the greatest common divisor of given numbers.");
                     String question3 = askQuestion(GCD.questionGenerator());
                     String userAnswer3 = receiveUserAnswer();
                     String correctAnswer3 = GCD.getCorrectAnswer(question3);
@@ -63,6 +72,7 @@ public class Engine {
                     }
                     break;
                 case "progression":
+                    System.out.println("What number is missing in the progression?");
                     String question4 = askQuestion(Progression.questionGenerator());
                     String userAnswer4 = receiveUserAnswer();
                     String correctAnswer4 = Progression.getCorrectAnswer(question4);
@@ -76,6 +86,7 @@ public class Engine {
                     }
                     break;
                 case "prime":
+                    System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
                     String question5 = askQuestion(Prime.questionGenerator());
                     String userAnswer5 = receiveUserAnswer();
                     String correctAnswer5 = Prime.getCorrectAnswer(question5);
